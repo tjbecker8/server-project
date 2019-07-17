@@ -12,7 +12,7 @@ app.use(cors())
 
 
 
-
+app.get('/api/hashtag', require('./controllers/get_hashtag'))
 
 
 
