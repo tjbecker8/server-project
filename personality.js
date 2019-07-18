@@ -30,5 +30,4 @@ googleSpeechText().then((transcription) => {
 	  .catch(err => {
 	    console.log('error:', err);
 	  });
-
 }).catch()

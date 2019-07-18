@@ -1,32 +1,35 @@
 require('dotenv').config();
+const _ = require('lodash');
+const speech = require('@google-cloud/speech');
+const cloudStorage = require('@google-cloud/storage');
+const fs = require('fs');
+const path = require('path');
 
 module.exports = () => {
-  const _ = require('lodash');
-  const speech = require('@google-cloud/speech');
-  const cloudStorage = require('@google-cloud/storage');
-  const fs = require('fs');
-  const path = require('path');
+	return new Promise(function(resolve, reject) {
 
-  const speechClient = new speech.SpeechClient();
+		// const personality = require('.personality')
 
-  // The path to the audio file to transcribe
-  const filePath = './resources/CS.WAV';
+	  const speechClient = new speech.SpeechClient();
 
-  // Google Cloud storage
-  const bucketName = 'tbeckproject'; // Must exist in your Cloud Storage
+	  // The path to the audio file to transcribe
+	  const filePath = './resources/CS.WAV';
 
-  const uploadToGcs = async () => {
-    const storage = cloudStorage({
-      projectId: process.env.GOOGLE_CLOUD_PROJECT_ID,
-    });
+	  // Google Cloud storage
+	  const bucketName = 'tbeckproject'; // Must exist in your Cloud Storage
 
-    const bucket = storage.bucket(bucketName);
-    const fileName = path.basename(filePath);
+	  const uploadToGcs = async () => {
+	    const storage = cloudStorage({
+	      projectId: process.env.GOOGLE_CLOUD_PROJECT_ID,
+	    });
 
-    await bucket.upload(filePath);
+	    const bucket = storage.bucket(bucketName);
+	    const fileName = path.basename(filePath);
 
-    return `gs://${bucketName}/${fileName}`;
-  };
+	    await bucket.upload(filePath);
+
+	    return `gs://${bucketName}/${fileName}`;
+	  };
 
   // Upload to Cloud Storage first, then detects speech in the audio file
   uploadToGcs()
@@ -47,7 +50,7 @@ module.exports = () => {
         config,
       };
 
-			return new Promise(function(resolve, reject) {
+
 
 	      speechClient.longRunningRecognize(request)
 	        .then((data) => {
@@ -69,9 +72,6 @@ module.exports = () => {
 						reject(err)
 			    });
 
-				}) // end of Promise
-    })
-    .catch(err => {
-      console.error('ERROR:', err);
-    });
+				})
+    }) // end of Promise
 }
