@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 //use watson library
 const PersonalityInsightsV3 = require('ibm-watson/personality-insights/v3');
 
@@ -122,7 +124,7 @@ And if you want some fun, sing ob-la-di, bla-da
 //Initialize by giving our credentials
 const personalityInsights = new PersonalityInsightsV3({
   version: '2017-10-13',
-  iam_apikey: 'glikG1rje_eWT-Bhs7CFTlWbp1Lg-W1vY3nlxp49d933',
+  iam_apikey: process.env.PERS_KEY,
 });
 
 

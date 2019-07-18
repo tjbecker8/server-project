@@ -24,7 +24,7 @@ const params =
 // Initialize the Tone Analyzer by giving it our credentials.
 const toneAnalyzer = new ToneAnalyzerV3({
   version: '2017-09-21',
-  iam_apikey: 'to0GBbL1IzO8PmJbCtV3dPnENJq8dtwuK_CInaoAGVEK',
+  iam_apikey: process.env.TONE_KEY,
 });
 
 

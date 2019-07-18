@@ -66,3 +66,5 @@ typings/
 Thumbs.db
 .exe
 .dll
+
+.config.js
