@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+module.exports = () => {
   const _ = require('lodash');
   const speech = require('@google-cloud/speech');
   const cloudStorage = require('@google-cloud/storage');
@@ -9,7 +10,7 @@ require('dotenv').config();
   const speechClient = new speech.SpeechClient();
 
   // The path to the audio file to transcribe
-  const filePath = './resources/test.WAV';
+  const filePath = './resources/CS.WAV';
 
   // Google Cloud storage
   const bucketName = 'tbeckproject'; // Must exist in your Cloud Storage
@@ -38,6 +39,7 @@ require('dotenv').config();
 				encoding: "LINEAR16",
 				sampleRateHertz: 16000,
         languageCode: 'en-US',
+				enableAutomaticPunctuation: true,
       };
 
       const request = {
@@ -45,21 +47,31 @@ require('dotenv').config();
         config,
       };
 
-      speechClient.longRunningRecognize(request)
-        .then((data) => {
-          const operation = data[0];
+			return new Promise(function(resolve, reject) {
 
-          // The following Promise represents the final result of the job
-          return operation.promise();
-        })
-        .then((data) => {
-          const results = _.get(data[0], 'results', []);
-          const transcription = results
-            .map(result => result.alternatives[0].transcript)
-            .join('\n');
-          console.log(`Transcription: ${transcription}`);
-        })
+	      speechClient.longRunningRecognize(request)
+	        .then((data) => {
+	          const operation = data[0];
+
+	          // The following Promise represents the final result of the job
+	          return operation.promise();
+	        })
+	        .then((data) => {
+	          const results = _.get(data[0], 'results', []);
+	          const transcription = results
+	            .map(result => result.alternatives[0].transcript)
+	            .join('\n');
+	          console.log(`Transcription: ${transcription}`);
+						resolve(transcription)
+	        })
+					.catch(err => {
+			      console.error('ERROR:', err);
+						reject(err)
+			    });
+
+				}) // end of Promise
     })
     .catch(err => {
       console.error('ERROR:', err);
     });
+}
