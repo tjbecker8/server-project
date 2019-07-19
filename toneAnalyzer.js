@@ -2,16 +2,20 @@ require('dotenv').config();
 // Use our Watson library.
 const ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
 
+const googleSpeechText = require('./googleSpeechText.js')
+
+googleSpeechText().then((transcription) => {
+
 // Require our config variables.
 
 
 // The text that we want to analyze the tone of.
-let text = `
-
-`
+// let text = `
+//
+// `
 
 // Turn our text into valid json.
-const input = { "text": text };
+const input = { "text": transcription };
 
 // The format that the tone analyzer needs.
 const params =
@@ -37,3 +41,4 @@ toneAnalyzer.tone(params)
   .catch(err => {
     console.log('error:', err);
   });
+	}).catch()

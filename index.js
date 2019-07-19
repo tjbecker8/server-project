@@ -12,7 +12,7 @@ app.use(cors())
 
 
 
-
+app.post('/api/personality', require('./controllers/post_personality'))
 
 // app.get('/api/tweets', require('./controllers/get_tweets'))
 // app.post('/api/tweets', require('./controllers/post_tweet'))
@@ -21,8 +21,8 @@ app.use(cors())
 // app.get('/api/hashtag', require('./controllers/get_hashtag'))
 // app.post('/api/hashtag', require('./controllers/post_hashtag'))
 //
-// app.post('/api/signup', require('./controllers/signup'))
-// app.post('/api/login', require('./controllers/login'))
+app.post('/api/signup', require('./controllers/signup'))
+app.post('/api/login', require('./controllers/login'))
 // app.get('/api/users', require('./controllers/get_users'))
 
 
