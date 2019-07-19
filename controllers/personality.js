@@ -1,8 +1,8 @@
 require('dotenv').config();
 
-const googleSpeechText = require('./googleSpeechText.js')
+// const googleSpeechText = require('./googleSpeechText.js')
 
-googleSpeechText().then((transcription) => {
+module.exports = (transcription) => {
 
 	//use watson library
 	const PersonalityInsightsV3 = require('ibm-watson/personality-insights/v3');
@@ -30,4 +30,4 @@ googleSpeechText().then((transcription) => {
 	  .catch(err => {
 	    console.log('error:', err);
 	  });
-}).catch()
+}

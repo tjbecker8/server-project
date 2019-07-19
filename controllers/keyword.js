@@ -2,9 +2,9 @@ const unirest = require('unirest')
 require('dotenv').config();
 
 
-const googleSpeechText = require('./googleSpeechText.js')
+// const googleSpeechText = require('./googleSpeechText.js')
 
-googleSpeechText().then((transcription) => {
+module.exports = (transcription) => {
 
 unirest.post("https://textanalysis-keyword-extraction-v1.p.rapidapi.com/keyword-extractor-text")
 .header("X-RapidAPI-Host", "textanalysis-keyword-extraction-v1.p.rapidapi.com")
@@ -15,4 +15,4 @@ unirest.post("https://textanalysis-keyword-extraction-v1.p.rapidapi.com/keyword-
 .end(function (result) {
   console.log(result.status, result.headers, result.body);
 });
-}).catch()
+}
