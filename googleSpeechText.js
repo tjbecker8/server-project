@@ -13,7 +13,7 @@ module.exports = () => {
 	  const speechClient = new speech.SpeechClient();
 
 	  // The path to the audio file to transcribe
-	  const filePath = '../resources/dts2.wav';
+	  const filePath = './resources/5min.wav';
 
 	  // Google Cloud storage
 	  const bucketName = 'tbeckproject'; // Must exist in your Cloud Storage
