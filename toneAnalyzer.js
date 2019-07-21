@@ -28,7 +28,7 @@ module.exports = (transcription) => {
 	// Use our Tone Analyzer variable to analyze the tone.
 	toneAnalyzer.tone(params)
 	  .then(toneAnalysis => {
-	    console.log(JSON.stringify(toneAnalysis, null, 2));
+	    console.log('tone', JSON.stringify(toneAnalysis, null, 2));
 	  })
 	  .catch(err => {
 	    console.log('error:', err);

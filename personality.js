@@ -25,7 +25,7 @@ module.exports = (transcription) => {
 
 	personalityInsights.profile(profileParams)
 	  .then(profile => {
-	    console.log(JSON.stringify(profile, null, 2));
+	    console.log('personality',JSON.stringify(profile, null, 2));
 	  })
 	  .catch(err => {
 	    console.log('error:', err);
