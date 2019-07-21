@@ -4,7 +4,7 @@ const personality = require('./personality')
 const keyword = require('./keyword')
 
 // require model
-
+module.exports=(req, res)=>{
 googleSpeechText().then((transcription) => {
 
 	const tone = new Promise(function(resolve, reject) {
@@ -34,9 +34,11 @@ googleSpeechText().then((transcription) => {
 
 	Promise.all([tone, person, key]).then((values) => {
 		console.log('values',values);
+		res.json(values)
 		// model.create(json_data)
 	}).catch(err => {
 		console.error('ERROR:', err);
 	});
 
 })
+}

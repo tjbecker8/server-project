@@ -1,4 +1,5 @@
 require('dotenv').config();
+const db_personality = require('./models/personalityInsights')
 
 // const googleSpeechText = require('./googleSpeechText.js')
 
@@ -26,6 +27,7 @@ module.exports = (transcription) => {
 	personalityInsights.profile(profileParams)
 	  .then(profile => {
 	    console.log('personality',JSON.stringify(profile, null, 2));
+			// db_personality.create(JSON.stringify(profile, null, 2))
 	  })
 	  .catch(err => {
 	    console.log('error:', err);

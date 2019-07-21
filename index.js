@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-
+// const fullAnalysis = require('./fullAnalysis')
 
 require('dotenv').config()
 require('./db')
@@ -14,6 +14,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cors())
 
+
+app.post('/full', require('./fullAnalysis'))
 
 
 app.post('/api/personality', require('./controllers/post_personality'))
