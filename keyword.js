@@ -6,6 +6,9 @@ require('dotenv').config();
 
 module.exports = (transcription) => {
 
+return new Promise(function(resolve, reject) {
+
+
 unirest.post("https://textanalysis-keyword-extraction-v1.p.rapidapi.com/keyword-extractor-text")
 .header("X-RapidAPI-Host", "textanalysis-keyword-extraction-v1.p.rapidapi.com")
 .header("X-RapidAPI-Key", process.env.X_RAPIDAPI_Key)
@@ -13,6 +16,8 @@ unirest.post("https://textanalysis-keyword-extraction-v1.p.rapidapi.com/keyword-
 .send(`text=${transcription}`)
 .send("wordnum=5")
 .end(function (result) {
-  console.log('keywords',result.body);
-});
+  // console.log('keywords',result.body);
+	resolve(result.body)
+})
+})
 }

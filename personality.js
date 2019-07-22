@@ -5,6 +5,7 @@ const db_personality = require('./models/personalityInsights')
 
 module.exports = (transcription) => {
 
+return new Promise(function(resolve, reject) {
 	//use watson library
 	const PersonalityInsightsV3 = require('ibm-watson/personality-insights/v3');
 
@@ -26,10 +27,15 @@ module.exports = (transcription) => {
 
 	personalityInsights.profile(profileParams)
 	  .then(profile => {
-	    console.log('personality',JSON.stringify(profile, null, 2));
+	    // console.log('personality',JSON.stringify(profile, null, 2));
 			// db_personality.create(JSON.stringify(profile, null, 2))
+			resolve(profile)
 	  })
 	  .catch(err => {
 	    console.log('error:', err);
+			reject(err)
 	  });
+
+		})
+
 }
