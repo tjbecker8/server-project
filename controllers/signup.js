@@ -7,7 +7,7 @@ module.exports = (req, res) => {
 		email: req.body.email
 	}).then((user)=>{
 		if(user) {
-			return console.log('email is already in use');
+			// return console.log('email is already in use');
 		} else {
 			bcrypt.hash(req.body.password, 10, (err, encrypted) => {
 				if (err) {

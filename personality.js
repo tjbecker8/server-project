@@ -32,7 +32,7 @@ return new Promise(function(resolve, reject) {
 			resolve(profile)
 	  })
 	  .catch(err => {
-	    console.log('error:', err);
+	    // console.log('error:', err);
 			reject(err)
 	  });
 

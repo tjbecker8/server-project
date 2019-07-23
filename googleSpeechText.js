@@ -5,7 +5,16 @@ const cloudStorage = require('@google-cloud/storage');
 const fs = require('fs');
 const path = require('path');
 
-module.exports = () => {
+
+
+
+
+
+module.exports = (audio) => {
+
+console.log('audio', audio);
+
+
 	return new Promise(function(resolve, reject) {
 
 		// const personality = require('.personality')
@@ -13,7 +22,7 @@ module.exports = () => {
 	  const speechClient = new speech.SpeechClient();
 
 	  // The path to the audio file to transcribe
-	  const filePath = './resources/5min.wav';
+	  const filePath = `./${audio.path}`
 
 	  // Google Cloud storage
 	  const bucketName = 'tbeckproject'; // Must exist in your Cloud Storage
@@ -64,7 +73,7 @@ module.exports = () => {
 	          const transcription = results
 	            .map(result => result.alternatives[0].transcript)
 	            .join('\n');
-	          console.log(`Transcription: ${transcription}`);
+	          // console.log(`Transcription: ${transcription}`);
 						resolve(transcription)
 	        })
 					.catch(err => {

@@ -6,7 +6,15 @@ const fs = require('fs');
 const path = require('path');
 const speechClient = new speech.SpeechClient();
 
+
 // Functions
+
+// Google Cloud storage
+ // Must exist in your Cloud Storage
+const bucketName = 'tbeckproject';
+
+// const data_uri = new Datauri()
+
 
 const audioToText = (audio) => {
 	return new Promise(function(resolve, reject) {
@@ -21,7 +29,7 @@ const audioToText = (audio) => {
 				const transcription = results
 					.map(result => result.alternatives[0].transcript)
 					.join('\n');
-				console.log(`Transcription: ${transcription}`);
+				// console.log(`Transcription: ${transcription}`);
 				resolve(transcription)
 			})
 			.catch(err => {
@@ -31,55 +39,81 @@ const audioToText = (audio) => {
 	})
 }
 
-const uploadAudio = (projectId) => {
+
+// const uploadAudio = (projectId) => {
+// 	return new Promise(function(resolve, reject) {
+// 		const storage = cloudStorage({
+// 			projectId: projectId,
+// 		});
+//
+// 		const bucket = storage.bucket(bucketName);
+// 		const fileName = path.basename(filePath);
+//
+// 		bucket.upload(filePath).then(() => {
+// 			resolve(`gs://${bucketName}/${fileName}`)
+// 		})
+// 	})
+// }
+
+const uploadAudio = (projectId, filePath, name) => {
 	return new Promise(function(resolve, reject) {
+		// console.log('uploadAudio');
 		const storage = cloudStorage({
 			projectId: projectId,
 		});
 
 		const bucket = storage.bucket(bucketName);
-		const fileName = path.basename(filePath);
+		// const fileName = audio.originalname;
 
 		bucket.upload(filePath).then(() => {
-			resolve(`gs://${bucketName}/${fileName}`)
+			resolve(`gs://${bucketName}/${name}`)
+		}).catch((err) => {
+			reject(err)
 		})
 	})
 }
 
 
-module.exports = () => {
-	return new Promise(function(resolve, reject) {
+module.exports = (audio) => {
 
-	  // The path to the audio file to transcribe
-	  const filePath = './resources/CS.WAV';
 
-	  // Google Cloud storage
-	  const bucketName = 'tbeckproject'; // Must exist in your Cloud Storage
+	return new Promise((resolve, reject) => {
 
-  // Upload to Cloud Storage first, then detects speech in the audio file
-	uploadAudio(process.env.GOOGLE_CLOUD_PROJECT_ID).then(async (gcsUri) => {
-			const audio = {
-				uri: gcsUri,
-			};
+		console.log('audio', audio);
+		// The path to the audio file to transcribe
+		const filePath = `./${audio.path}`
 
-			const config = {
-				encoding: "LINEAR16",
-				sampleRateHertz: 16000,
-				languageCode: 'en-US',
-				enableAutomaticPunctuation: true,
-			};
+			// Upload to Cloud Storage first, then detects speech in the audio file
+			uploadAudio(process.env.GOOGLE_CLOUD_PROJECT_ID, filePath, audio.originalname).then((gcsUri) => {
+				const audio1 = {
+					uri: gcsUri,
+				}
 
-			const request = {
-				audio,
-				config,
-			};
+				const config = {
+					encoding: "LINEAR16",
+					sampleRateHertz: 16000,
+					languageCode: 'en-US',
+					enableAutomaticPunctuation: true,
+				};
+
+				const request = {
+					audio1,
+					config,
+				};
+
+				audioToText(request).then((text) => {
+					// console.log('text', text);
+					resolve(text)
+				})
+
+			}).catch(err => {
+				reject(err)
+			})
+
 
 		})
 
-		audioToText(request).then((text) => {
-			console.log('text', text);
-			resolve(text)
-		})
 
-	}) // end of Promise
+
+ // end of Promise
 }

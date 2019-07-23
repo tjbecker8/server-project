@@ -61,7 +61,7 @@ require('dotenv').config();
 	          const transcription = results
 	            .map(result => result.alternatives[0].transcript)
 	            .join('\n');
-	          console.log(`Transcription: ${transcription}`);
+	          // console.log(`Transcription: ${transcription}`);
 						resolve(transcription)
 
 						const PersonalityInsightsV3 = require('ibm-watson/personality-insights/v3');
@@ -84,10 +84,10 @@ require('dotenv').config();
 
 						personalityInsights.profile(profileParams)
 							.then(profile => {
-								console.log(JSON.stringify(profile, null, 2));
+								// console.log(JSON.stringify(profile, null, 2));
 							})
 							.catch(err => {
-								console.log('error:', err);
+								// console.log('error:', err);
 							});
 
 	        })

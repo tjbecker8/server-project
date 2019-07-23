@@ -34,7 +34,7 @@ module.exports = (transcription) => {
 				resolve(toneAnalysis)
 			})
 			.catch(err => {
-				console.log('error:', err);
+				// console.log('error:', err);
 				reject(err)
 			});
 
