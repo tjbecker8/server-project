@@ -9,6 +9,8 @@ const db_fullAnalysis = db.model('fullAnalysis', {
 	consumption_preferences: [],
 	warnings: [],
 	keywords: [],
+	name: String,
+	transcription: String
 })
 
 module.exports = db_fullAnalysis

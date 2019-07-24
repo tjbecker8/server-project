@@ -12,18 +12,19 @@ const deleteFile = (filePath) => {
 	fs.access(filePath, error => {
 		if (!error) {
 			fs.unlink(filePath, (error) => {
-				console.log('12345',error);
+				// console.log(error);
 			})
 		} else {
-			console.log('56789',error);
+			console.log('error',error);
     }
 })
 }
 
 // require model
 module.exports=(req, res)=>{
-
-	console.log('5656', req.file.path);
+	console.log('Starting Analysis');
+// console.log('body',req.body.name);
+	// console.log('5656', req.file.path);
 	googleSpeechText(req.file).then((transcription) => {
 
 
@@ -69,15 +70,19 @@ module.exports=(req, res)=>{
 				consumption_preferences: values[1].consumption_preferences,
 				warnings: values[1].warnings,
 				keywords: values[2].keywords,
+				name: req.body.name,
+				transcription: transcription
+
 			}
 
 			db_fullAnalysis.create(document).then((data) => {
 				res.json(data)
+				console.log('Analysis Complete');
 			})
 		}).catch(err => {
 			console.error('ERROR:', err);
-		});
-
+		})
+		res.send(document)
 	}).catch(err => {
 		// console.log('£££££ err', err);
 	})

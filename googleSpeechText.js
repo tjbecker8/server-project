@@ -11,7 +11,7 @@ const path = require('path');
 
 module.exports = (audio) => {
 
-console.log('audio', audio);
+// console.log('audio', audio);
 
 
 
@@ -81,5 +81,8 @@ console.log('audio', audio);
 						reject(err)
 			    });
 				})
+			}).catch(err => {
+				console.error('ERROR:', err);
+				reject(err)
 			})
     } // end of Promise

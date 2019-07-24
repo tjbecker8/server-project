@@ -67,5 +67,7 @@ Thumbs.db
 .exe
 .dll
 
-.config.js
+
 /config.js
+
+*.wav
