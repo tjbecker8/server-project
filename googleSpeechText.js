@@ -40,6 +40,7 @@ module.exports = (audio) => {
 	    return `gs://${bucketName}/${fileName}`;
 	  };
 
+
   // Upload to Cloud Storage first, then detects speech in the audio file
   uploadToGcs()
     .then(async (gcsUri) => {
@@ -80,6 +81,7 @@ module.exports = (audio) => {
 			      console.error('ERROR:', err);
 						reject(err)
 			    });
+
 				})
 			}).catch(err => {
 				console.error('ERROR:', err);
