@@ -77,7 +77,7 @@ module.exports=(req, res)=>{
 			db_fullAnalysis.create(document).then((data) => {
 				console.log('Analysis Complete');
 				deleteFile(`./${req.file.path}`)
-				res.json(data)
+				res.send(document)
 			}).catch((err) => {
 				console.error('ERROR db_fullAnalysis:', err);
 			})

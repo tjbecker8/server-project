@@ -23,6 +23,7 @@ app.use(cors())
 
 
 app.post('/full', upload.single('file'), require('./fullAnalysis'))
+app.get('/full', require('./controllers/get_analysis'))
 
 
 app.post('/api/personality', require('./controllers/post_personality'))
