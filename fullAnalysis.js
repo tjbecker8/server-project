@@ -56,7 +56,7 @@ module.exports=(req, res)=>{
 
 		Promise.all([tone, person, key]).then((values) => {
 			// console.log('values',values);
-			res.json(values)
+			// res.json(values)
 			// db_tones.create(values[0])
 			// db_personality.create(values[1])
 			// db_keywords.create(values[2])
@@ -75,17 +75,19 @@ module.exports=(req, res)=>{
 			}
 
 			db_fullAnalysis.create(document).then((data) => {
+				console.log('Analysis Complete', data);
+				deleteFile(`./${req.file.path}`)
 				res.json(data)
-				console.log('Analysis Complete');
+			}).catch((err) => {
+				console.error('ERROR db_fullAnalysis:', err);
 			})
-		}).catch(err => {
-			console.error('ERROR:', err);
+		}).catch((err) => {
+			console.error('ERROR Promise.all:', err);
 		})
 
 	}).catch(err => {
 		// console.log('£££££ err', err);
 	})
-	setTimeout(deleteFile, 45000, `./${req.file.path}`)
 
 
 }

@@ -82,6 +82,9 @@ module.exports = (audio) => {
 						reject(err)
 			    });
 
+				}).catch(err => {
+					console.error('ERROR:', err);
+					reject(err)
 				})
 			}).catch(err => {
 				console.error('ERROR:', err);

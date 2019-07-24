@@ -10,7 +10,11 @@ const db_fullAnalysis = db.model('fullAnalysis', {
 	warnings: [],
 	keywords: [],
 	name: String,
-	transcription: String
+	transcription: String,
+	date: {
+		type: Date,
+		default: Date.now()
+	}
 })
 
 module.exports = db_fullAnalysis
