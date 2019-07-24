@@ -16,8 +16,6 @@ const db_user = db.model('user', {
 		required: [true, 'Message body is required'],
 	},
 
-
-
 })
 
 module.exports = db_user

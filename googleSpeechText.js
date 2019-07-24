@@ -2,7 +2,6 @@ require('dotenv').config();
 const _ = require('lodash');
 const speech = require('@google-cloud/speech');
 const cloudStorage = require('@google-cloud/storage');
-const fs = require('fs');
 const path = require('path');
 
 
@@ -13,6 +12,7 @@ const path = require('path');
 module.exports = (audio) => {
 
 console.log('audio', audio);
+
 
 
 	return new Promise(function(resolve, reject) {
@@ -80,7 +80,6 @@ console.log('audio', audio);
 			      console.error('ERROR:', err);
 						reject(err)
 			    });
-
 				})
-    }) // end of Promise
-}
+			})
+    } // end of Promise

@@ -3,14 +3,29 @@ const toneAnalyzer = require('./toneAnalyzer')
 const personality = require('./personality')
 const keyword = require('./keyword')
 const db_fullAnalysis = require('./models/fullAnalysis')
+const fs = require('fs');
+const path = require('path');
 
+
+
+const deleteFile = (filePath) => {
+	fs.access(filePath, error => {
+		if (!error) {
+			fs.unlink(filePath, (error) => {
+				console.log('12345',error);
+			})
+		} else {
+			console.log('56789',error);
+    }
+})
+}
 
 // require model
 module.exports=(req, res)=>{
-	// console.log('>>>>> req.body', req.body);
-	// console.log('>>>>> req.file', req.file);
-	// console.log(req.file)
+
+	console.log('5656', req.file.path);
 	googleSpeechText(req.file).then((transcription) => {
+
 
 		const tone = new Promise(function(resolve, reject) {
 			toneAnalyzer(transcription).then((data) => {
@@ -66,4 +81,7 @@ module.exports=(req, res)=>{
 	}).catch(err => {
 		// console.log('£££££ err', err);
 	})
+	setTimeout(deleteFile, 30000, `./${req.file.path}`)
+
+
 }
