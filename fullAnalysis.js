@@ -81,7 +81,7 @@ module.exports=(req, res)=>{
 	}).catch(err => {
 		// console.log('£££££ err', err);
 	})
-	setTimeout(deleteFile, 30000, `./${req.file.path}`)
+	setTimeout(deleteFile, 45000, `./${req.file.path}`)
 
 
 }
