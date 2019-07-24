@@ -72,7 +72,6 @@ module.exports=(req, res)=>{
 				keywords: values[2].keywords,
 				name: req.body.name,
 				transcription: transcription
-
 			}
 
 			db_fullAnalysis.create(document).then((data) => {
@@ -82,7 +81,7 @@ module.exports=(req, res)=>{
 		}).catch(err => {
 			console.error('ERROR:', err);
 		})
-		res.send(document)
+
 	}).catch(err => {
 		// console.log('£££££ err', err);
 	})
