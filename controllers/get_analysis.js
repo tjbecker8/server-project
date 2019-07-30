@@ -7,7 +7,10 @@ module.exports = (req, res) => {
 		q._id = req.query._id
 	}
 
-	db_fullAnalysis.find(q).then((data) => {
+	db_fullAnalysis.find(q).sort('date').populate({
+		path: 'author',
+		select: 'name email'
+	}).then((data) => {
 		res.send(data)
 	}).catch((err)=>{
 		res.send(err)
