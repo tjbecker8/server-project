@@ -5,6 +5,7 @@ const keyword = require('./keyword')
 const db_fullAnalysis = require('./models/fullAnalysis')
 const fs = require('fs');
 const path = require('path');
+const jwt = require('jsonwebtoken')
 
 
 
@@ -23,6 +24,10 @@ const deleteFile = (filePath) => {
 // require model
 module.exports=(req, res)=>{
 	console.log('Starting Analysis');
+
+	let token = req.headers.authorization.split(' ')[1]
+	jwt.verify(token, process.env.SECRET, (err, decoded) =>{
+		if (decoded) {
 // console.log('body',req.body.name);
 	// console.log('5656', req.file.path);
 	googleSpeechText(req.file).then((transcription) => {
@@ -62,6 +67,7 @@ module.exports=(req, res)=>{
 			// db_keywords.create(values[2])
 			// .create(json_data)
 			let document = {
+				author: decoded._id,
 				document_tone: values[0].document_tone,
 				word_count: values[1].word_count,
 				processed_language: values[1].processed_language,
@@ -77,7 +83,7 @@ module.exports=(req, res)=>{
 			db_fullAnalysis.create(document).then((data) => {
 				console.log('Analysis Complete');
 				deleteFile(`./${req.file.path}`)
-				res.send(document)
+				res.send(data)
 			}).catch((err) => {
 				console.error('ERROR db_fullAnalysis:', err);
 			})
@@ -88,6 +94,6 @@ module.exports=(req, res)=>{
 	}).catch(err => {
 		// console.log('£££££ err', err);
 	})
-
-
+}
+})
 }
