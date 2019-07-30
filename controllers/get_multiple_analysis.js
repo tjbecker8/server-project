@@ -8,12 +8,11 @@ module.exports = (req, res) => {
 	let token = req.headers.authorization.split(' ')[1]
 	jwt.verify(token, process.env.SECRET, (err, decoded) =>{
 		if (decoded) {
+			console.log(decoded._id);
+			let author = decoded._id
 
 
-
-
-
-	db_fullAnalysis.findById(req.params.id).sort('date').populate({
+	db_fullAnalysis.find({author: decoded._id}).sort('date').populate({
 		path: 'author',
 		select: 'name email'
 	}).then((data) => {
