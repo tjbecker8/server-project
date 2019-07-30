@@ -28,6 +28,7 @@ app.get('/full', require('./controllers/get_analysis'))
 
 app.post('/api/personality', require('./controllers/post_personality'))
 
+app.get('/api/users', require('./controllers/get_users'))
 
 app.post('/api/signup', require('./controllers/signup'))
 app.post('/api/login', require('./controllers/login'))
