@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 const _ =require('lodash')
 
 
-const mostTones = []
+let mostTones =
 findMostTones = (array) => {
 	var arr1=array;
 	var mf = 1;
@@ -23,12 +23,12 @@ findMostTones = (array) => {
 		}
 		m=0;
 	}
-	mostTones.push(item)
+	 mostTones = item
 }
 
 
 
-const mostkeyword = []
+let mostkeyword =
 findMostKeywords = (array) => {
 	var arr1=array;
 	var mf = 1;
@@ -48,11 +48,11 @@ findMostKeywords = (array) => {
 		}
 		m=0;
 	}
-	mostkeyword.push(item)
+	mostkeyword = item
 }
 
 
-let mostPersonality = []
+let mostPersonality =
 findMostpersonality = (array) => {
 	var arr1=array;
 	var mf = 1;
@@ -72,10 +72,10 @@ findMostpersonality = (array) => {
 		}
 		m=0;
 	}
-	mostPersonality.push(item)
+	 mostPersonality = item
 }
 
-let mostLike = []
+let mostLike =
 findMostLike = (array) => {
 	var arr1=array;
 	var mf = 1;
@@ -95,11 +95,11 @@ findMostLike = (array) => {
 		}
 		m=0;
 	}
-	mostLike.push(item);
+	 mostLike = item
 }
 
 
-let mostUnlike = []
+let mostUnlike =
 findMostUnlike = (array) => {
 	var arr1=array;
 	var mf = 1;
@@ -119,7 +119,8 @@ findMostUnlike = (array) => {
 		}
 		m=0;
 	}
-	mostUnlike.push(item)
+	// console.log('item', item);
+	 mostUnlike = item
 }
 
 
@@ -136,7 +137,7 @@ module.exports = (req, res) => {
 	let token = req.headers.authorization.split(' ')[1]
 	jwt.verify(token, process.env.SECRET, (err, decoded) =>{
 		if (decoded) {
-			console.log(decoded._id);
+			// console.log(decoded._id);
 			let author = decoded._id
 
 
@@ -145,7 +146,7 @@ module.exports = (req, res) => {
 		select: 'name email'
 	}).then((data) => {
 
-		console.log(data[0]);
+		// console.log(data[0]);
 		// create calc
 
 let size = _.size(data)
@@ -231,7 +232,7 @@ let calc = {
 	author: data[0].author
 }
 
-console.log('calc', calc);
+// console.log('calc', calc);
 		res.json({
 			data: data,
 			calc: calc
