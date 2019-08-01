@@ -10,9 +10,6 @@ module.exports = (req, res) => {
 		if (decoded) {
 
 
-
-
-
 	db_fullAnalysis.findById(req.params.id).sort('date').populate({
 		path: 'author',
 		select: 'name email'
