@@ -4,7 +4,8 @@
   "description": "server for final project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "Thomas Becker",
   "license": "ISC",
@@ -27,5 +28,10 @@
     "unirest": "^0.6.0",
     "uuid": "^3.3.2",
     "watson-developer-cloud": "^4.0.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^6.2.0"
   }
 }
