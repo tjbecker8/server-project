@@ -5,7 +5,8 @@ const db_fullAnalysis = db.model('fullAnalysis', {
 	author: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'user',
-		required: [true, 'Message Author is required']
+		required: [true, 'Message Author is required'],
+		default: "5d42c96d62aebe3275ce391d"
 	},
 	document_tone: {},
 	word_count: Number,

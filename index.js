@@ -27,6 +27,8 @@ app.get('/full/:id', require('./controllers/get_analysis'))
 
 app.get('/api/analysis', require('./controllers/get_multiple_analysis'))
 
+app.delete('/api/delete', require('./controllers/delete_analysis'))
+
 
 app.post('/api/personality', require('./controllers/post_personality'))
 

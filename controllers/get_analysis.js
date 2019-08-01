@@ -19,6 +19,16 @@ module.exports = (req, res) => {
 		res.send(err)
 	})
 	}
+	else {
+		db_fullAnalysis.findById(req.params.id).sort('date').populate({
+			path: 'author',
+			select: 'name email'
+		}).then((data) => {
+			res.send(data)
+		}).catch((err)=>{
+			res.send(err)
+		})
+	}
 })
 
 }
