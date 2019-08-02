@@ -89,7 +89,7 @@ module.exports=(req, res)=>{
 			db_fullAnalysis.findByIdAndUpdate(data._id, document, {new:true}).then((data) => {
 				console.log('Analysis Complete');
 				deleteFile(`./${req.file.path}`)
-				console.log('res data', data);
+				// console.log('res data', data);
 				// res.json({
 				// 	message: 'itz works',
 				// 	data: data

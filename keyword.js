@@ -16,7 +16,7 @@ unirest.post("https://textanalysis-keyword-extraction-v1.p.rapidapi.com/keyword-
 .send(`text=${transcription}`)
 .send("wordnum=5")
 .end(function (result) {
-  console.log('keywords',result.body);
+  // console.log('keywords',result.body);
 	resolve(result.body)
 })
 })
