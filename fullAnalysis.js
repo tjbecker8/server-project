@@ -29,9 +29,14 @@ module.exports=(req, res)=>{
 	console.log('Starting Analysis');
 
 	let token = req.headers.authorization.split(' ')[1]
-	jwt.verify(token, process.env.SECRET, (err, decoded) =>{
+	jwt.verify(token, process.env.SECRET, (err, decoded) => {
 		if (decoded) {
-			// console.log('decoded');
+			console.log('decoded');
+			if (req.file) {
+			db_fullAnalysis.create({}).then((data) =>{
+					res.send(data)
+
+
 	googleSpeechText(req.file).then((transcription) => {
 		// console.log('google success');
 
@@ -81,29 +86,38 @@ module.exports=(req, res)=>{
 				transcription: transcription
 			}
 
-			db_fullAnalysis.create(document).then((data) => {
+			db_fullAnalysis.findByIdAndUpdate(data._id, document, {new:true}).then((data) => {
 				console.log('Analysis Complete');
 				deleteFile(`./${req.file.path}`)
 				console.log('res data', data);
-				res.json({
-					message: 'itz works',
-					data: data
-				})
+				// res.json({
+				// 	message: 'itz works',
+				// 	data: data
+				// })
 			}).catch((err) => {
 				console.error('ERROR db_fullAnalysis:', err);
-				res.send(err)
+				// res.send(err)
 			})
 		}).catch((err) => {
 			console.error('ERROR Promise.all:', err);
-			res.send(err)
+			// res.send(err)
 		})
 
 	}).catch(err => {
 		// console.log('£££££ err', err);
-		res.send(err)
+		// res.send(err)
 	})
+})
 }
+}
+
 else {
+	if (req.file) {
+	db_fullAnalysis.create({}).then((data) =>{
+			res.send(data)
+
+
+	console.log('trial');
 	googleSpeechText(req.file).then((transcription) => {
 
 
@@ -166,7 +180,10 @@ else {
 	}).catch(err => {
 		// console.log('£££££ err', err);
 	})
-
+})
 }
+}
+//end of else
+
 })
 }
