@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "spatial-rig-247006",
+  "private_key_id": "7a944776488d45706f2502c28bd6ec140e984de3",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDJLUJzlNH8pn8o\nre5GYeEBduusUQzKnqg8z/H/bxvtMK7W5uxpacOWAuW2VEmnhGL7ncRWXrXx+Kdb\nJG7sQmxV0SAwia00iNPs8yNDhqtdb5n70Z+Z72zxc/T7OczgYPMZeFft4o3/4CTp\nSK7OKAsbeMqH2KziMkzmuoaOseThvUILWByo9vANtNgSeA4WdC07IsZmtqO6a9xZ\ncubIxixoRT01meRLT3eIxRSo4TnyNPoWnQr3lLtbjdgS+uZXdOemTLrO/yMwai5C\nZbps7kvO4EGDdE394ClA0QIl8kjTsimLCHObq4ZD0iMc1KYjeR6b3W1zPdeZzV/e\nwQ4hsr1/AgMBAAECggEAJzK343BoV+uTFDiLmFAi+NeUhP9H2EUAr9SuqOAb12Po\ndTwKbWGrt9N5scSLk2XSqYcshc2vcuXJqhMXv9YTaMc2F+8Dfhx4+o7HXLVlN2/y\n12OZTvOdTRCUd8zj1AZf56MQsuu1Ull4p7G/SbD4tRIcmEqKKQq2/C/03uHfoHIY\n0arpihN+5Ou954HKzg4ydGgycERZ33MFYSEAcOPXHYu9c8iinZMyUmL2LDYLdDqc\nKpruVoaBrX5zrbKTYDoI0dqm295NekSHkRoSw9Qymg0iAZ5LoNRIrskcJpO0da7K\nyDSjRMoVGV+zSCT9stW0S+pZedEY+dgugx6h2huAFQKBgQDwhellaX11dluEwn0W\ngMmt/j8gWUBknQGYZgeFwUNSNO4PHd+fvyspjrvj+ZV+bGI9xh8gWVorHVwpxS41\nXGaBma7OtsUOK8MOKXJzM8Zd2rlefioEvGdU/dLclgoDWdyjjeTMZaHMzgLqzPhu\nNX0r3OmQ9Rcp/jJhN+qXLmEiDQKBgQDWHzRK3rQHax7uBq6HXDqmerGIRbhcfSfF\nOdRguIRtDYDW39e64Aul3U1ATGp2Ye0mkDOkACzd41CfA7U75UlCCSOgZ2RtE5u7\nRkupVsmOV0X9YOHkeR3ILnfO0lvJMSfmf7O0+a/ppVjDvL6FVmo6duNQZUfFamzT\n3R073WjWuwKBgEFmaBwnHvH9iM0EhTbFNhGVfFyzaArzlid2Nr1r235S3hhGKzQo\nqvfV08kdaETD+8KISJZnNVlb1l+VOgdQZJ8AxsN2dwZvZ85F/tTMUzfZ7WWAMLSw\n9ffqPJe2RGq82H2wa3IYgHJL4gcuTK7K5Io0u12rBu1oLRK6PZN2DPtRAoGBAIB9\nIyUWdNPKzTmqmsqxZqSGFcifhd1CYT4x0Kblstm586l9k3gZgAPdQ8Ek2fIGG4g7\nmjF8xW+1O6jgUb4KfiZ5U36q7JGj5ZzAtyB76uFWr7I3k/ZFU8DPWaerhda6f6YK\n1azw9EXxqc1zkqRy0bYZp5iT3jix/3I3Spak64eHAoGAKeShWRu3tLA04UvGCYA2\n74o69YXIGlAeNZZuFR9QV5btlozDVvzVGGUYuVe744JavRK7U9o0UFT8w5FmQyh5\naOuGFFEf/V6b/xhlWC9Yun1JI3DWUE5XAXnf9/0pol7abFuqj9O+NxGuvN3VjzzV\nKsn6b9mb6BFwkPF7kBlIxSw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "tjbecker8@spatial-rig-247006.iam.gserviceaccount.com",
+  "client_id": "105622137541648863543",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tjbecker8%40spatial-rig-247006.iam.gserviceaccount.com"
+}
