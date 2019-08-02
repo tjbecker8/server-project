@@ -76,7 +76,7 @@ module.exports = (audio) => {
 	          const transcription = results
 	            .map(result => result.alternatives[0].transcript)
 	            .join('\n');
-	          // console.log(`Transcription: ${transcription}`);
+	          console.log(`Transcription: ${transcription}`);
 						resolve(transcription)
 	        })
 					.catch(err => {

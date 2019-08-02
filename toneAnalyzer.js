@@ -7,7 +7,7 @@ const ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
 module.exports = (transcription) => {
 
 	return new Promise(function(resolve, reject) {
-
+		console.log('tone');
 		// Turn our text into valid json.
 		const input = { "text": transcription };
 

@@ -7,6 +7,7 @@ module.exports = (transcription) => {
 
 return new Promise(function(resolve, reject) {
 	//use watson library
+	console.log('personality');
 	const PersonalityInsightsV3 = require('ibm-watson/personality-insights/v3');
 
 	//Initialize by giving our credentials
