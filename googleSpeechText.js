@@ -44,6 +44,7 @@ module.exports = (audio) => {
   // Upload to Cloud Storage first, then detects speech in the audio file
   uploadToGcs()
     .then(async (gcsUri) => {
+			// console.log('gcs');
       const audio = {
         uri: gcsUri,
       };
@@ -70,6 +71,7 @@ module.exports = (audio) => {
 	          return operation.promise();
 	        })
 	        .then((data) => {
+
 	          const results = _.get(data[0], 'results', []);
 	          const transcription = results
 	            .map(result => result.alternatives[0].transcript)

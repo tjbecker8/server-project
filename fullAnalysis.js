@@ -31,11 +31,14 @@ module.exports=(req, res)=>{
 	let token = req.headers.authorization.split(' ')[1]
 	jwt.verify(token, process.env.SECRET, (err, decoded) =>{
 		if (decoded) {
+			// console.log('decoded');
 	googleSpeechText(req.file).then((transcription) => {
+		// console.log('google success');
 
 
 		const tone = new Promise(function(resolve, reject) {
 			toneAnalyzer(transcription).then((data) => {
+				// console.log('tone success');
 				resolve(data)
 			}).catch(err => {
 				reject(err)
@@ -45,6 +48,7 @@ module.exports=(req, res)=>{
 
 		const person = new Promise(function(resolve, reject) {
 			personality(transcription).then((data) => {
+				// console.log('person success');
 				resolve(data)
 			}).catch(err => {
 				reject(err)
@@ -54,6 +58,7 @@ module.exports=(req, res)=>{
 
 		const key = new Promise(function(resolve, reject) {
 			keyword(transcription).then((data) => {
+				// console.log('key success');
 				resolve(data)
 			}).catch(err => {
 				reject(err)
@@ -61,7 +66,7 @@ module.exports=(req, res)=>{
 		})
 
 		Promise.all([tone, person, key]).then((values) => {
-
+			console.log('all success');
 			let document = {
 				author: decoded._id,
 				document_tone: values[0].document_tone,
@@ -79,6 +84,7 @@ module.exports=(req, res)=>{
 			db_fullAnalysis.create(document).then((data) => {
 				console.log('Analysis Complete');
 				deleteFile(`./${req.file.path}`)
+				console.log('res data', data);
 				res.send(data)
 			}).catch((err) => {
 				console.error('ERROR db_fullAnalysis:', err);
