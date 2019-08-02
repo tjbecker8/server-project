@@ -85,16 +85,22 @@ module.exports=(req, res)=>{
 				console.log('Analysis Complete');
 				deleteFile(`./${req.file.path}`)
 				console.log('res data', data);
-				res.send(data)
+				res.json({
+					message: 'itz works',
+					data: data
+				})
 			}).catch((err) => {
 				console.error('ERROR db_fullAnalysis:', err);
+				res.send(err)
 			})
 		}).catch((err) => {
 			console.error('ERROR Promise.all:', err);
+			res.send(err)
 		})
 
 	}).catch(err => {
 		// console.log('£££££ err', err);
+		res.send(err)
 	})
 }
 else {
