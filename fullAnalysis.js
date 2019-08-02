@@ -26,7 +26,7 @@ const deleteFile = (filePath) => {
 
 // require model
 module.exports=(req, res)=>{
-	console.log('req', req);
+	// console.log('req', req);
 	console.log('Starting Analysis');
 
 	let token = req.headers.authorization.split(' ')[1]
