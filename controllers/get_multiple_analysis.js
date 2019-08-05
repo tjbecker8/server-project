@@ -155,7 +155,7 @@ data.map((c) => {
 			 keywords.push(c.keywords)
 		})
 		let flatKey = _.flatten(keywords)
-		console.log(flatKey);
+		// console.log(flatKey);
 		findMostKeywords(flatKey)
 
 
