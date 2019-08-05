@@ -152,6 +152,7 @@ module.exports = (req, res) => {
 let size = _.size(data)
 let keywords = []
 data.map((c) => {
+		console.log(c.keywords);
 			return keywords.push(c.keywords)
 		})
 		let flatKey = _.flatten(keywords)
