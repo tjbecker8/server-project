@@ -152,11 +152,8 @@ module.exports = (req, res) => {
 let size = _.size(data)
 let keywords = []
 data.map((c) => {
-		console.log(c.keywords);
-
+		console.log(c.keywords.length);
 			 keywords.push(c.keywords)
-
-		console.log('keywords',keywords);
 		})
 		let flatKey = _.flatten(keywords)
 		findMostKeywords(flatKey)
