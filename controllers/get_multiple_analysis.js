@@ -153,7 +153,9 @@ let size = _.size(data)
 let keywords = []
 data.map((c) => {
 		console.log(c.keywords);
+		if (!c.keywords === null) {
 			return keywords.push(c.keywords)
+		}
 		})
 		let flatKey = _.flatten(keywords)
 		findMostKeywords(flatKey)
