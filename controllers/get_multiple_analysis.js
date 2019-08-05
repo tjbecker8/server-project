@@ -154,8 +154,7 @@ let keywords = []
 data.map((c) => {
 		console.log(c.keywords);
 		if (c.keywords.length === 5) {
-			console.log('logity log log',c.keywords);
-			return keywords.push(c.keywords)
+			 keywords.push(c.keywords)
 		}
 		console.log('keywords',keywords);
 		})
