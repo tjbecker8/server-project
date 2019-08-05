@@ -153,7 +153,7 @@ let size = _.size(data)
 let keywords = []
 data.map((c) => {
 		console.log(c.keywords);
-		if (!c.keywords === null) {
+		if (c.keywords.length === 5) {
 			console.log('logity log log',c.keywords);
 			return keywords.push(c.keywords)
 		}
