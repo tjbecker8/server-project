@@ -154,8 +154,10 @@ let keywords = []
 data.map((c) => {
 		console.log(c.keywords);
 		if (!c.keywords === null) {
+			console.log('logity log log',c.keywords);
 			return keywords.push(c.keywords)
 		}
+		console.log('keywords',keywords);
 		})
 		let flatKey = _.flatten(keywords)
 		findMostKeywords(flatKey)
