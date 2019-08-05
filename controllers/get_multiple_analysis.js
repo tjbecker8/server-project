@@ -28,7 +28,7 @@ findMostTones = (array) => {
 
 
 
-let mostkeyword =
+let mostkeyword = ''
 findMostKeywords = (array) => {
 	var arr1=array;
 	var mf = 1;
