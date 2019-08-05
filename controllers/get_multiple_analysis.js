@@ -232,7 +232,8 @@ let calc = {
 	author: data[0].author
 }
 
-// console.log('calc', calc);
+
+console.log('calc', calc);
 		res.json({
 			data: data,
 			calc: calc
